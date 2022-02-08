@@ -10,6 +10,8 @@ This is just a mirror. Use by your own responsability.
 Updates and bug fixes
 ---------------------
 
+This repository is frozen to iTextSharp version 4.2.0 and will not be updated/supported.
+
 For latest versions available under AGPL and commercial licenses, please refer to:
 
 - [Official iText](http://itextpdf.com/)

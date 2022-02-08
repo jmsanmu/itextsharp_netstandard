@@ -4,13 +4,35 @@
     <AssemblyVersion>4.2.0.0</AssemblyVersion>
     <FileVersion>4.2.0.0</FileVersion>
     <Version>4.2.0</Version>
-    <PackageId>itextsharp420.netstandard</PackageId>
-    <Authors>itextsharp, José Manuel Sánchez</Authors>
+    <PackageId>pdf.sharp-netstandard-MPL-AGPL</PackageId>
+    <Authors>jmsanmu</Authors>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>ItextSharp v4.2.0.0 with LGPL / MPL license. Use by your own responsability. The repository owner and the nuget creator does not have responsability in any case</Description>
+    <RepositoryUrl>https://github.com/jmsanmu/itextsharp_netstandard</RepositoryUrl>
+    <PackageTags>ItextSharp;netstandard</PackageTags>
+    <PackageReleaseNotes>netstandard compatibility version</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>	  
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>	 	  
     <Company />
+	<Title>ItextSharp v4.2.0.0 with LGPL / MPL license. Use by your own responsability. The repository owner and the nuget creator does not have responsability in any case</Title>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+	  <None Include="..\..\LICENSE">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>	  
+  </ItemGroup>	
 </Project>
