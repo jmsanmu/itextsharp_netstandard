@@ -697,6 +697,7 @@ namespace iTextSharp.text.pdf {
         protected string ReadStandardString(int length) {
             byte[] buf = new byte[length];
             rf.ReadFully(buf);
+            System.Text.Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             return System.Text.Encoding.GetEncoding(1252).GetString(buf);
         }
     
