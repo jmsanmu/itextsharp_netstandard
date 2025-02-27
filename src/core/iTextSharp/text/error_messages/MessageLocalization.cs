@@ -4,6 +4,8 @@ using System.Text;
 using System.IO;
 
 using iTextSharp.text.pdf;
+using static System.Net.Mime.MediaTypeNames;
+using System.Reflection;
 
 /*
  * $Id: $
@@ -199,7 +201,7 @@ namespace iTextSharp.text.error_messages {
             currentLanguage = ReadLanguageStream(r);
         }
 
-        private static Hashtable GetLanguageMessages(String language, String country) {
+        private static Hashtable GetLanguageMessages(String language="en", String country = "") {
             if (language == null)
                 throw new ArgumentException("The language cannot be null.");
             Stream isp = null;
@@ -209,7 +211,8 @@ namespace iTextSharp.text.error_messages {
                     file = language + "_" + country + ".lng";
                 else
                     file = language + ".lng";
-                isp = BaseFont.GetResourceStream(BASE_PATH + file);
+                isp = GetResource(BASE_PATH + file);
+                //isp = BaseFont.GetResourceStream(BASE_PATH + file);
                 if (isp != null)
                     return ReadLanguageStream(isp);
                 if (country == null)
@@ -228,6 +231,13 @@ namespace iTextSharp.text.error_messages {
                 }
                 // do nothing
             }
+        }
+
+        public static Stream GetResource(string resourcePath)
+        {
+            var info = Assembly.GetExecutingAssembly().GetName();
+            var name = info.Name;
+            return  Assembly.GetExecutingAssembly().GetManifestResourceStream($"{name}.{resourcePath}");
         }
 
         private static Hashtable ReadLanguageStream(Stream isp) {

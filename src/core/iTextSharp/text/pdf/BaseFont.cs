@@ -1350,61 +1350,68 @@ namespace iTextSharp.text.pdf {
          * @return the <CODE>Stream</CODE> to get the resource or
          * <CODE>null</CODE> if not found
          */    
-        public static Stream GetResourceStream(string key) {
-            Stream istr = null;
-            // Try to use resource loader to load the properties file.
-            try {
-                Assembly assm = Assembly.GetExecutingAssembly();
-                istr = assm.GetManifestResourceStream(key);
-            }
-            catch {
-            }
-            if (istr != null)
-                return istr;
-            for (int k = 0; k < resourceSearch.Count; ++k) {
-                object obj = resourceSearch[k];
-                try {
-                    if (obj is Assembly) {
-                        istr = ((Assembly)obj).GetManifestResourceStream(key);
-                        if (istr != null)
-                            return istr;
-                    }
-                    else if (obj is string) {
-                        string dir = (string)obj;
-                        try {
-                            istr = Assembly.LoadFrom(dir).GetManifestResourceStream(key);
-                        }
-                        catch {
-                        }
-                        if (istr != null)
-                            return istr;
-                        string modkey = key.Replace('.', '/');
-                        string fullPath = Path.Combine(dir, modkey);
-                        if (File.Exists(fullPath)) {
-                            return new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                        }
-                        int idx = modkey.LastIndexOf('/');
-                        if (idx >= 0) {
-                            modkey = modkey.Substring(0, idx) + "." + modkey.Substring(idx + 1);
-                            fullPath = Path.Combine(dir, modkey);
-                            if (File.Exists(fullPath))
-                                return new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                        }
-                    }
-                }
-                catch {
-                }
-            }
+        //public static Stream GetResourceStream(string key) {
+        //    Stream istr = null;
+        //    // Try to use resource loader to load the properties file.
+        //    try {
+        //        Assembly assm = Assembly.GetExecutingAssembly();
+        //        istr = assm.GetManifestResourceStream(key);
+        //    }
+        //    catch {
+        //    }
+        //    if (istr != null)
+        //        return istr;
+        //    for (int k = 0; k < resourceSearch.Count; ++k) {
+        //        object obj = resourceSearch[k];
+        //        try {
+        //            if (obj is Assembly) {
+        //                istr = ((Assembly)obj).GetManifestResourceStream(key);
+        //                if (istr != null)
+        //                    return istr;
+        //            }
+        //            else if (obj is string) {
+        //                string dir = (string)obj;
+        //                try {
+        //                    istr = Assembly.LoadFrom(dir).GetManifestResourceStream(key);
+        //                }
+        //                catch {
+        //                }
+        //                if (istr != null)
+        //                    return istr;
+        //                string modkey = key.Replace('.', '/');
+        //                string fullPath = Path.Combine(dir, modkey);
+        //                if (File.Exists(fullPath)) {
+        //                    return new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //                }
+        //                int idx = modkey.LastIndexOf('/');
+        //                if (idx >= 0) {
+        //                    modkey = modkey.Substring(0, idx) + "." + modkey.Substring(idx + 1);
+        //                    fullPath = Path.Combine(dir, modkey);
+        //                    if (File.Exists(fullPath))
+        //                        return new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //                }
+        //            }
+        //        }
+        //        catch {
+        //        }
+        //    }
 
-            return istr;
+        //    return istr;
+        //}
+
+        public static Stream GetResourceStream(string resourcePath)
+        {
+            var info = Assembly.GetExecutingAssembly().GetName();
+            var name = info.Name;
+            return Assembly.GetExecutingAssembly().GetManifestResourceStream($"{name}.{resourcePath}");
         }
-    
+
         /** Gets the Unicode equivalent to a CID.
          * The (inexistent) CID <FF00> is translated as '\n'. 
          * It has only meaning with CJK fonts with Identity encoding.
          * @param c the CID code
          * @return the Unicode equivalent
-         */    
+         */
         public virtual int GetUnicodeEquivalent(int c) {
             return c;
         }
