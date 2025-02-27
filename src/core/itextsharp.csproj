@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>4.2.0.0</AssemblyVersion>
-    <FileVersion>4.2.0.0</FileVersion>
-    <Version>4.2.0</Version>
+    <AssemblyVersion>4.2.0.1</AssemblyVersion>
+    <FileVersion>4.2.0.1</FileVersion>
+    <Version>4.2.1</Version>
     <PackageId>pdf.sharp-netstandard-MPL-AGPL</PackageId>
     <Authors>jmsanmu</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -15,7 +15,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>	 	  
     <Company />
-	<Title>ItextSharp v4.2.0.0 with LGPL / MPL license. Use by your own responsability. The repository owner and the nuget creator does not have responsability in any case</Title>
+	<Title>ItextSharp v4.2.0.1 with LGPL / MPL license. Use by your own responsability. The repository owner and the nuget creator does not have responsability in any case</Title>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <ItemGroup>
@@ -40,9 +40,9 @@
     <None Remove="iTextSharp\text\pdf\fonts\ZapfDingbats.afm" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="9.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.2" />
     <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.1" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.2" />
   </ItemGroup>
 
 
